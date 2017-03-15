@@ -12,4 +12,8 @@ class Event < ApplicationRecord
   def self.order_by_price
     order(:price)
   end
+
+
+
+
 end
