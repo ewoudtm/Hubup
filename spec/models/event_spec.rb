@@ -40,4 +40,16 @@ RSpec.describe Event, type: :model do
       expect(Event.order_by_price).to match_array [event1, event2, event3]
     end
   end
+
+  describe "association with user" do
+    let(:user) { create :user }
+
+    it "belongs to a user" do
+      event = user.events.new
+
+      expect(event.user).to eq(user)
+    end
+  end
+
+
 end
