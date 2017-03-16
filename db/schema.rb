@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311091310) do
+ActiveRecord::Schema.define(version: 20170315110559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20170311091310) do
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_photos_on_event_id", using: :btree
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -53,6 +61,18 @@ ActiveRecord::Schema.define(version: 20170311091310) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.decimal  "price"
+    t.string   "status"
+    t.integer  "guests_count"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["event_id"], name: "index_registrations_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_registrations_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,5 +93,8 @@ ActiveRecord::Schema.define(version: 20170311091310) do
   end
 
   add_foreign_key "events", "users"
+  add_foreign_key "photos", "events"
   add_foreign_key "profiles", "users"
+  add_foreign_key "registrations", "events"
+  add_foreign_key "registrations", "users"
 end

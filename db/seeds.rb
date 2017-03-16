@@ -1,3 +1,5 @@
+require "faker"
+
 Category.delete_all
 Event.delete_all
 Profile.delete_all
