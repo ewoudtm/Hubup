@@ -67,3 +67,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use Devise for authentication
 gem 'devise', '~> 4.2'
+
+group :production do
+  gem 'rails_12factor'
+end
