@@ -43,7 +43,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
 
   gem 'factory_girl_rails', '4.7.0'
-  gem 'faker', '1.6.6'
 end
 
 group :development do
@@ -67,6 +66,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use Devise for authentication
 gem 'devise', '~> 4.2'
+
+gem 'faker', '1.6.6'
 
 group :production do
   gem 'rails_12factor'
