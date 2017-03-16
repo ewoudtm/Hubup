@@ -69,6 +69,9 @@ gem 'devise', '~> 4.2'
 
 gem 'faker', '1.6.6'
 
+gem 'carrierwave', '0.11.2'
+
+
 group :production do
   gem 'rails_12factor'
 end
