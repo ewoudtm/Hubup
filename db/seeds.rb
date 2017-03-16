@@ -1,4 +1,4 @@
-require "faker"
+require 'faker'
 
 Category.delete_all
 Event.delete_all
