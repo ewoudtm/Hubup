@@ -23,7 +23,26 @@ photo6 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/
 photo7 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489671698/6851047085_af9d084b08_b_nfkxy5.jpg")
 photo8 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489671699/15781646439_e7266d9451_k_pdqjt5.jpg")
 photo9 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489671698/5086325483_026545690c_b_qw7suo.jpg")
+photo10 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703379/8269076712_7149b8f73a_z_vutm7j.jpg")
+photo11 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703379/5_small_business_tips_for_2013_lecn7l.jpg")
+photo12 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703378/shakehands_rund_qscmru.jpg")
+photo13 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703377/Sow_Cub_Love_bysdip.jpg")
+photo14 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703376/girl-803934_640_kvlbme.jpg")
+photo15 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703377/1e0cb106d8e756d2fc53398f1e46786f_cxf4cp.jpg")
+photo16 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703379/Asia-Nepal-Himalayas-Mountains-Landscape_cially.jpg")
+photo17 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703378/MG_4778_qq4tub.jpg")
+photo18 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703375/Edge-of-Lost-World-MAG1_ktcy24.jpg")
+photo19 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/DSC_0494_riohua.jpg")
+photo20 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703377/lhotse_tludzz.jpg")
+photo21 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703375/Above-the-Monsoon-MAG1_l9lxnf.jpg")
+photo22 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/consider-Michael-Anderson-Thamserku-Towers-Boreal-Forest-Nepal_btsitp.jpg")
+photo23 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/2048-1-1500x1000_thyoko.jpg")
+photo24 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/tumblr_n2vq5wa2Qm1qf3gpdo1_1280_fdfybj.jpg")
+photo25 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/amazing-animal-art-bear-Favim.com-2371936_bfbpis.jpg")
+photo26 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/homeless_and_pets_1_ulh5ls.jpg")
+photo27 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/dog-photo-by-grace-chon_yuimh8.jpg")
 
+photos = [photo4, photo5, photo6, photo7, photo8, photo9, photo10, photo11, photo12, photo13, photo14, photo15, photo16, photo17, photo18, photo19, photo20, photo21, photo22, photo23, photo24, photo25, photo26, photo27, ]
 
 event = Event.create!(
   name: "Monthly Yoga Weekend",
@@ -56,8 +75,9 @@ event = Event.find_by(name: "Monthly Yoga Weekend")
 event.categories << Category.find_by(name: "Outdoors & Adventure")
 event.categories << Category.find_by(name: "Sports & Fitness")
 
+photo_counter = 0
 
-for i in 1..6 do
+for i in 1..5 do
   first_name = Faker::Name.first_name
   user = User.create!(
   email: "#{first_name}@hubup.com",
@@ -70,7 +90,8 @@ for i in 1..6 do
   bio: Faker::ChuckNorris.fact
   )
 
-  for x in 1..(Faker::Number.between(2,4)) do
+  for x in 1..2 do
+
     event = Event.create!(
     name: Faker::Book.title,
     description: Faker::Lorem.paragraph,
@@ -84,7 +105,10 @@ for i in 1..6 do
     active: true,
     user: user
     )
-
+    photo_counter += 1
+    event.photos << photos[photo_counter]
+    photo_counter += 1
+    event.photos << photos[photo_counter]
     event.categories << Category.find_by(name: "Outdoors & Adventure")
     event.categories << Category.find_by(name: "Sports & Fitness")
 
