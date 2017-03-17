@@ -6,12 +6,15 @@ Event.delete_all
 Profile.delete_all
 User.delete_all
 
+#users
 
+miriam = User.create!(email: "miriam@hubup.com", password: "abcd1234")
+danika = User.create!(email: "danika@hubup.com", password: "abcd1234")
+jackson = User.create!(email: "jackson@hubup.com", password: "abcd1234")
+walton = User.create!(email: "walton@hubup.com", password: "abcd1234")
+derek = User.create!(email: "derek@hubup.com", password: "abcd1234")
+vilma = User.create!(email: "vilma@hubup.com", password: "abcd1234")
 
-miriam = User.create!(
-  email: "miriam@hubup.com",
-  password: "abcd1234",
-)
 
 #photos
 photo1 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489671699/2310969291_d4149e60db_o_uliiw2.jpg")
@@ -42,9 +45,9 @@ photo25 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image
 photo26 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/homeless_and_pets_1_ulh5ls.jpg")
 photo27 = Photo.create(remote_image_url:"http://res.cloudinary.com/ewoudtm/image/upload/v1489703374/dog-photo-by-grace-chon_yuimh8.jpg")
 
-photos = [photo4, photo5, photo6, photo7, photo8, photo9, photo10, photo11, photo12, photo13, photo14, photo15, photo16, photo17, photo18, photo19, photo20, photo21, photo22, photo23, photo24, photo25, photo26, photo27, ]
+#photos = [photo4, photo5, photo6, photo7, photo8, photo9, photo10, photo11, photo12, photo13, photo14, photo15, photo16, photo17, photo18, photo19, photo20, photo21, photo22, photo23, photo24, photo25, photo26, photo27, ]
 
-event = Event.create!(
+event1 = Event.create!(
   name: "Monthly Yoga Weekend",
   description: "Let's come together and practice some asanas together in the woods!",
   location: "Amsterdam",
@@ -58,6 +61,72 @@ event = Event.create!(
   user: miriam,
   photos: [photo1, photo2, photo3]
 )
+
+event2 Event.create!(
+  name: "Monthly Yoga Weekend",
+  description: "Let's come together and practice some asanas together in the woods!",
+  location: "Amsterdam",
+  includes_food: false,
+  includes_drinks: true,
+  price: 10.00,
+  starts_at: 10.days.from_now,
+  ends_at: 12.days.from_now,
+  capacity: 100,
+  active: true,
+  user: miriam,
+  photos: [photo1, photo2, photo3]
+)
+
+11	Eyeless in Gaza	Tenetur aliquid reprehenderit illo ducimus. Et minus explicabo harum debitis suscipit. Rem praesentium sit rerum nihil beatae reiciendis.	Amsterdam	FALSE	TRUE	25,37	2017-03-26 00:00:00	2017-04-14 00:00:00	10	TRUE	6	2017-03-17 06:29:10.545376	2017-03-17 06:29:10.545376
+
+event3 = Event.create!(
+  name: "Monthly Yoga Weekend",
+  description: "Let's come together and practice some asanas together in the woods!",
+  location: "Amsterdam",
+  includes_food: false,
+  includes_drinks: true,
+  price: 10.00,
+  starts_at: 10.days.from_now,
+  ends_at: 12.days.from_now,
+  capacity: 100,
+  active: true,
+  user: miriam,
+  photos: [photo1, photo2, photo3]
+)
+
+event4 = Event.create!(
+  name: "Monthly Yoga Weekend",
+  description: "Let's come together and practice some asanas together in the woods!",
+  location: "Amsterdam",
+  includes_food: false,
+  includes_drinks: true,
+  price: 10.00,
+  starts_at: 10.days.from_now,
+  ends_at: 12.days.from_now,
+  capacity: 100,
+  active: true,
+  user: miriam,
+  photos: [photo1, photo2, photo3]
+)
+
+event5 = Event.create!(
+  name: "Monthly Yoga Weekend",
+  description: "Let's come together and practice some asanas together in the woods!",
+  location: "Amsterdam",
+  includes_food: false,
+  includes_drinks: true,
+  price: 10.00,
+  starts_at: 10.days.from_now,
+  ends_at: 12.days.from_now,
+  capacity: 100,
+  active: true,
+  user: miriam,
+  photos: [photo1, photo2, photo3]
+)
+
+
+
+#themes
 
 theme = Category.create!([
   { name: "Movements" },
@@ -75,47 +144,57 @@ event = Event.find_by(name: "Monthly Yoga Weekend")
 event.categories << Category.find_by(name: "Outdoors & Adventure")
 event.categories << Category.find_by(name: "Sports & Fitness")
 
-photo_counter = 0
 
-for i in 1..5 do
-  first_name = Faker::Name.first_name
-  user = User.create!(
-  email: "#{first_name}@hubup.com",
-  password: "abcd1234"
-  )
 
-  profile = Profile.create!(
-  first_name: first_name,
-  last_name: Faker::Name.last_name,
-  bio: Faker::ChuckNorris.fact
-  )
 
-  for x in 1..2 do
 
-    event = Event.create!(
-    name: Faker::Book.title,
-    description: Faker::Lorem.paragraph,
-    location: "Amsterdam",
-    includes_food: false,
-    includes_drinks: true,
-    price: Faker::Commerce.price,
-    starts_at: Date.today.next_day(Faker::Number.between(5,10)),
-    ends_at: Date.today.next_day(Faker::Number.between(11,45)),
-    capacity: (Faker::Number.between(1, 10))*5,
-    active: true,
-    user: user
-    )
-    photo_counter += 1
-    event.photos << photos[photo_counter]
-    photo_counter += 1
-    event.photos << photos[photo_counter]
-    event.categories << Category.find_by(name: "Outdoors & Adventure")
-    event.categories << Category.find_by(name: "Sports & Fitness")
 
-    # for y in 1..(Faker::Number.between(1, 3)) do
-    #   event.categories << theme[Faker::Number.between(1, 9)]
-    # end
-    # Faker::Number.unique.clear
-  end
+#photo_counter = 0
+
+# for i in 1..5 do
+#   first_name = Faker::Name.first_name
+#   user = User.create!(
+#   email: "#{first_name}@hubup.com",
+#   password: "abcd1234"
+#   )
+#
+#   profile = Profile.create!(
+#   first_name: first_name,
+#   last_name: Faker::Name.last_name,
+#   bio: Faker::ChuckNorris.fact
+#   )
+#
+#   for x in 1..2 do
+#
+#     event = Event.create!(
+#     name: Faker::Book.title,
+#     description: Faker::Lorem.paragraph,
+#     location: "Amsterdam",
+#     includes_food: false,
+#     includes_drinks: true,
+#     price: Faker::Commerce.price,
+#     starts_at: Date.today.next_day(Faker::Number.between(5,10)),
+#     ends_at: Date.today.next_day(Faker::Number.between(11,45)),
+#     capacity: (Faker::Number.between(1, 10))*5,
+#     active: true,
+#     user: user
+#     )
+#     photo_counter += 1
+#     event.photos << photos[photo_counter]
+#     photo_counter += 1
+#     event.photos << photos[photo_counter]
+#     event.categories << Category.find_by(name: "Outdoors & Adventure")
+#     event.categories << Category.find_by(name: "Sports & Fitness")
+#
+#     # for y in 1..(Faker::Number.between(1, 3)) do
+#     #   event.categories << theme[Faker::Number.between(1, 9)]
+#     # end
+#     # Faker::Number.unique.clear
+#   end
+
+  ## bookings
+
+  Registration.create(event: event, user: wouter, price: 50, total: 100, starts_at: 10.days.from_now, ends_at: 12.days.from_now)
+  Registration.create(event: event, user: matt, price: 50, total: 200, starts_at: 20.days.from_now, ends_at: 24.days.from_now)
 
 end
