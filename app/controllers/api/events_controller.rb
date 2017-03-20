@@ -1,5 +1,4 @@
-class Api::EventsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+class Api::EventsController < Api::BaseController
 
   def index
     events = Event.all
