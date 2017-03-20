@@ -17,7 +17,23 @@ class Event < ApplicationRecord
     order(:price)
   end
 
+  def self.alphabetized
+    order(name: :asc)
+  end
 
+  scope :published, -> {where(active: true)}
+
+  def self.starts_before_and_ends_after(start_date, end_date)
+    where('starts_at < ? AND ends_at > ?', start_date, end_date)
+  end
+
+  def self.starts_on(start_date)
+    where('starts_at = ?', start_date)
+  end
+
+  def self.ends_on(end_date)
+    where('ends_at = ?', end_date)
+  end
 
 
 end

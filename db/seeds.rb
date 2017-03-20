@@ -1,5 +1,6 @@
 require 'faker'
 
+Registration.delete_all
 Photo.delete_all
 Category.delete_all
 Event.delete_all
@@ -62,7 +63,7 @@ event1 = Event.create!(
   photos: [photo1, photo2, photo3]
 )
 
-event2 Event.create!(
+event2 = Event.create!(
   name: "Monthly Yoga Weekend",
   description: "Let's come together and practice some asanas together in the woods!",
   location: "Amsterdam",
@@ -76,8 +77,6 @@ event2 Event.create!(
   user: miriam,
   photos: [photo1, photo2, photo3]
 )
-
-11	Eyeless in Gaza	Tenetur aliquid reprehenderit illo ducimus. Et minus explicabo harum debitis suscipit. Rem praesentium sit rerum nihil beatae reiciendis.	Amsterdam	FALSE	TRUE	25,37	2017-03-26 00:00:00	2017-04-14 00:00:00	10	TRUE	6	2017-03-17 06:29:10.545376	2017-03-17 06:29:10.545376
 
 event3 = Event.create!(
   name: "Monthly Yoga Weekend",
@@ -194,7 +193,8 @@ event.categories << Category.find_by(name: "Sports & Fitness")
 
   ## bookings
 
-  Registration.create(event: event, user: wouter, price: 50, total: 100, starts_at: 10.days.from_now, ends_at: 12.days.from_now)
-  Registration.create(event: event, user: matt, price: 50, total: 200, starts_at: 20.days.from_now, ends_at: 24.days.from_now)
-
-end
+  Registration.create(event: event2, user: danika, price: event.price, guest_count: 3)
+  Registration.create(event: event3, user: miriam, price: event.price, guest_count: 1)
+  Registration.create(event: event1, user: walton, price: event.price, guest_count: 2)
+  Registration.create(event: event2, user: derek, price: event.price, guest_count: 1)
+  Registration.create(event: event5, user: miriam, price: event.price, guest_count: 2)

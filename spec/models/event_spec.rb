@@ -63,4 +63,35 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe ".alphabetized" do
+    let!(:event1) { create :event, name: "Testing event"}
+    let!(:event2) { create :event, name: "Another testing event" }
+    let!(:event3) { create :event, name: "Yet another testing event" }
+
+    it "returns a sorted array of events by name" do
+      expect(Event.alphabetized).to match_array [event2, event1, event3]
+    end
+  end
+
+  describe ".published" do
+    let(:event1) {create :event, active: "true"}
+    let(:event2) {create :event, active: "false"}
+    let(:event3) {create :event, active: "true"}
+
+    it "returns an array of published events" do
+      expect(Event.published).to match_array [event1, event3]
+    end
+  end
+
+  describe ".starts_before_and_ends_after" do
+    let(:event1) {create :event, starts_at: 5.days.from_now, ends_at: 10.days.from_now}
+    let(:event2) {create :event, starts_at: 15.days.from_now, ends_at: 20.days.from_now}
+    let(:event3) {create :event, starts_at: 2.days.from_now, ends_at: 8.days.from_now}
+
+    it "returns and array of events that start before and end after 2 given dates" do
+      expect(Event.starts_before_and_ends_after(7.days.from_now)).to match_array [event1,event3]
+    end
+  end
+
+
 end
